@@ -1,0 +1,56 @@
+
+body{
+    background-image: url(../images/business-g237ea8317_1920.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.logo{
+    padding: 5%;
+}
+.whole{
+    margin: auto;
+   
+}
+
+.no-border {
+    border: 0;
+    box-shadow: none;
+}
+form{
+    width: 1100px;
+    margin: auto;
+    border-radius: 20px;
+}
+p{
+    font-weight: 900;
+    font-size: 24px;
+    width: 100%;
+    
+}
+p:first-child {
+    border-right: 1px solid black;
+  }
+
+span{
+    color: red;
+}
+.form-control::-webkit-input-placeholder {
+    color: black;
+  }
+
+ul li{
+    list-style: none;
+}
+ul li a{
+    text-decoration: none;
+    color: red;
+}
+.cat{
+    padding: 2%;
+    margin: auto;
+    margin-left: 15%;
+}
+.btn{
+    width: 200px;
+}
