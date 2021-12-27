@@ -6,3 +6,6 @@ from django.shortcuts import render
 def IndexView(request):
     return render(request, 'home.html')
 
+
+def ProductsView(request):
+    return render(request, 'products.html')
