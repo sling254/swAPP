@@ -77,12 +77,8 @@ WSGI_APPLICATION = 'swAPP.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': 'swapp',
-           'USER': 'moringa',
-           'PASSWORD': 'czar',
-           'HOST': '127.0.0.1',
-           'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
