@@ -1,31 +1,30 @@
 {% extends 'base.html' %}
 
+
 {% load static %}
 
 {% block content %} 
-<div class="home">
-    <div class="container">
-        <div class="container text-center logo">
-            <a href="/"><img src="https://fontmeme.com/permalink/211221/55cdc7bdb04bf4e8e13e8ee3d9911ac1.png" alt="swAPP" border="0"></a>
-         </div>
-           <div class="container-fluid text-center whole">
-                 <form class="d-flex">
-                     <p class="d-flex text-center bg-warning p-2" ><span>Find</span><input class="form-control no-border me-2 bg-warning" type="search" placeholder="Enter Suppliers name" aria-label="Search"></p>
-                     <p class="d-flex text-center bg-warning p-2"><span>Near</span><input class="form-control no-border me-2 bg-warning" type="search" placeholder="Enter location" aria-label="Search"></p>
-                 </form>
-           </div>
-         <div class="container text-center mt-5">
-             <a href="/"><img src="https://fontmeme.com/permalink/211221/95f5e858b85234795651f2fd5ab6d76a.png" alt="browse suppliers by category" border="0"></a>
-        </div>
-         <div class="container text-center cat">
-             <ul class="d-flex">
-                 <li class="m-5"><button class= "btn btn-warning"><a href="">Automobile</a></button></li>
-                 <li class="m-5"><button class= "btn btn-warning"><a href="">Building & Construction</a></button></li>
-                 <li class="m-5"><button class= "btn btn-warning"><a href="">Food</a></button></li>
-                 <li class="m-5"><button class= "btn btn-warning"><a href="">Health & Medical</a></button></li>
-             </ul>
-     
-         </div>
+    <div class="container text-center logo">
+        <a href="/"><a href="/"><img src="https://fontmeme.com/permalink/211221/55cdc7bdb04bf4e8e13e8ee3d9911ac1.png" alt="swAPP" border="0"></a>
+    </div>
+      <div class="container-fluid text-center whole">
+            <form class="d-flex">
+                <p class="d-flex text-center bg-warning p-2" ><span>Find</span><input class="form-control no-border me-2 bg-warning" type="search" placeholder="Enter Suppliers name" aria-label="Search"></p>
+                <p class="d-flex text-center bg-warning p-2"><span>Near</span><input class="form-control no-border me-2 bg-warning" type="search" placeholder="Enter location" aria-label="Search"></p>
+            </form>
+      </div>
+    <div class="container text-center mt-5 ">
+        <a href="/"><img src="https://fontmeme.com/permalink/211221/95f5e858b85234795651f2fd5ab6d76a.png" class="swap" alt="browse suppliers by category" border="0"></a>
+   </div>
+    <div class="container text-center">
+        <ul class="row business">
+            <li class="col-md-2 m-5"><button class= "btn btn-warning"><a href="">Automobile</a></button></li>
+            <li class="col-md-2 m-5"><button class= "btn btn-warning"><a href="">Food</a></button></li>
+            <li class="col-md-2 m-5"><button class= "btn btn-warning"><a href="">Laptops</a></button></li>
+            <li class="col-md-2 m-5"><button class= "btn btn-warning"><a href="">Electronics</a></button></li>
+            <li class="col-md-2 m-5"><button class= "btn btn-warning"><a href="">Health & Medical</a></button></li>
+            <li class="col-md-2 m-5"><button class= "btn btn-warning"><a href="">Building & Construction</a></button></li>
+        </ul>
 
     </div>    
 </div>   
