@@ -10,6 +10,7 @@ for (var i = 0; i < updateBtns.length; i++){
             console.log("User Not logged in");
         }else{
             updateUserOrder(productId, action);
+			location.reload(true);
         }
     });
 }
@@ -31,7 +32,8 @@ function updateUserOrder(productId, action){
 		})
 		.then((data) => {
 		    console.log('data:',data);
-		});
+			location.reload(true);
+		})
 }
 
     
