@@ -4,12 +4,12 @@ from driver.forms import *
 from driver.models import *
 
 # Create your views here.
-def drivers_dash(request):
+# def drivers_dash(request):
 
-    drivers = Driver.objects.all().order_by('-id')
+#     drivers = Driver.objects.all().order_by('-id')
 
-    return render(request,'dashboard.html', {"drivers": drivers})
-    
+#     return render(request,'dashboard.html', {"drivers": drivers})
+
 
 def create_driver(request):
     current_user = request.user
@@ -22,7 +22,7 @@ def create_driver(request):
             drivers.user=current_user
             
             drivers.save()
-        return HttpResponseRedirect('/drivers/drivers_dash')
+        return HttpResponseRedirect('/drivers/drivers')
     else:
         form=DriversForm()
     return render (request,'driver_form.html', {'form': form})
