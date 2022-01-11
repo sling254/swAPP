@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+    <div class="container">
+        
+        <div class="row">
+            
+            <div class="col-md-4 driver">
+                <img src="{{drivers.photo.url}}"class="image">
+                
+                <h3 class="name">{{drivers.name}}  </h3>
+                
+                <h4>{{ drivers.location }}</h4>
+                <p>{{ drivers.details }}</p>
+                <p>{{ drivers.charge }}</p>
+                <p><a href="mailto: {{ drivers.email }}" target="_blank">{{ drivers.email }}</a></p>
+                <p><a href="tel: {{ drivers.phone_number }}" target="_blank">{{ drivers.phone_number }}</a></p>
+            
+                <p>{{ drivers.date|date }}</p>
+            
+            </div>
+            
+            
+        </div>
+    </div>
+
+    <style>
+        .image{
+            width: 50%;
+            height: auto;
+            border-radius: 50%;
+        }
+        .driver a{
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}

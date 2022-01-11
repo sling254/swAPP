@@ -34,3 +34,10 @@ def drivers(request):
     drivers = Driver.objects.all().order_by('-id')
     
     return render(request, "dashboard.html", {"drivers": drivers})
+
+
+def single_driver(request,name):
+    current_user = request.user
+    drivers = Driver.objects.get(name=name)
+    
+    return render(request,'single_driver.html',{'drivers': drivers,'current_user':current_user,})
