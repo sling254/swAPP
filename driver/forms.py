@@ -8,4 +8,4 @@ class DriversForm(ModelForm):
     
     class Meta:
         model = Driver
-        fields =['name','proile_pic','location','charge','contact']
+        fields =['name','photo', 'details' ,'location','charge','contact']
