@@ -20,7 +20,8 @@ class Driver(models.Model):
     photo = CloudinaryField("image",null=True)
     details = models.TextField(blank=True, null=True)
     location = models.ForeignKey(Location, on_delete=models.CASCADE,null=True)
-    contact = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    phone_number = models.IntegerField( blank=True, null=True)
     charge = models.IntegerField(blank=True)
     date = models.DateTimeField(auto_now_add=True, null=True)
 

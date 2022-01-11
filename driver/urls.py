@@ -1,5 +1,5 @@
 from django.urls import path
-from . views import drivers_dash, drivers, create_driver
+from . views import  drivers, create_driver
 
 urlpatterns = [
     # path('drivers_dash/', drivers_dash, name='drivers_dash'),
