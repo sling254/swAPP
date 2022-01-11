@@ -22,7 +22,7 @@ class Driver(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE,null=True)
     email = models.CharField(max_length=200)
     phone_number = models.IntegerField( blank=True, null=True)
-    charge = models.IntegerField(blank=True)
+    charge = models.IntegerField(blank=True, default=600)
     date = models.DateTimeField(auto_now_add=True, null=True)
 
     
