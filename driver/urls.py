@@ -1,7 +1,10 @@
 from django.urls import path
-from . import views
+from . views import drivers_dash, drivers, create_driver
 
 urlpatterns = [
-    path('', views.drivers_dash, name='drivers-dashboard'),
+    # path('drivers_dash/', drivers_dash, name='drivers_dash'),
+    path("create_driver", create_driver, name="create_driver"), 
+    path('drivers/', drivers, name='drivers')
+   
    
 ]
