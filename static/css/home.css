@@ -61,6 +61,11 @@ ul li a{
     margin-left: 2rem;
 }
 
+footer{
+    background-color: #FFCC03;
+    color: black;
+}
+
 @media all  and (max-width: 1200px) {
     form{
         width: auto;
