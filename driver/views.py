@@ -27,7 +27,7 @@ def create_driver(request):
         form=DriversForm()
     return render (request,'driver_form.html', {'form': form})
 
-# login_required(login_url="/accounts/login/")
+
 def drivers(request):
    
     
