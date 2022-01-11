@@ -4,24 +4,17 @@
     <div class="container">
         <h1 class="text-center mt-5"> The Drivers</h1>
         <div class="col-md-6">
-            <a href="{%url 'create_driver'%}"  class="btn btn-outline-dark bg-dark text-white rounded-pill text-center">
+            <a href="{%url 'create_driver'%}"  class="reg btn btn-outline-dark text-white rounded-pill text-center">
              Register as a Driver
             </a>
         </div>
         <div class="row">
             {% for driver in drivers %}
             <div class="col-md-4 driver">
-                <img src="{{driver.photo.url}}"class="image">
-                
-                <h3 class="name">{{driver.name}}  </h3>
-                
+                <a href="{% url 'single_driver' driver.name %}" class=""><img src="{{driver.photo.url}}" alt="" class="image"></a>
+                <p><a href="{% url 'single_driver' driver.name %}">{{driver.name}}</a></p>
                 <h4>{{ driver.location }}</h4>
-                <p>{{ driver.details }}</p>
-                <p>{{ driver.charge }}</p>
-                <p><a href="mailto: {{ driver.email }}" target="_blank">{{ driver.email }}</a></p>
                 <p><a href="tel: {{ driver.phone_number }}" target="_blank">{{ driver.phone_number }}</a></p>
-            
-                <p>{{ driver.date }}</p>
             
             </div>
             
@@ -38,5 +31,10 @@
         .driver a{
             text-decoration: none;
         }
+        .reg{
+        background-color: #FFCC03;
+        outline: none;
+        border: none;
+    }
     </style>
 {% endblock %}
