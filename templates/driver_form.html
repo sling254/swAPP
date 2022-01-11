@@ -14,29 +14,32 @@
     background-color: white;
     
     }
-    .hood{
+    .driver{
         margin-top: 5%;
+    }
+    .reg{
+        background-color: #FFCC03;
+        outline: none;
+        border: none;
     }
     
 </style>
 
 
-<div class="container hood">
+<div class="container driver">
     <div class="row">
-        <div class="col-md-2"></div>
+        
         <div class="col-md-8  poster">
             <h3 class="text-center tt ">Register as a Driver</h3>
             <form action="{%url 'create_driver'%}" method="post" enctype="multipart/form-data">
                 {%csrf_token%}    
                 {% bootstrap_form form%}
-                <input type="submit" class="btn btn-dark " value="Register as a Driver">
+                <input type="submit" class="reg rounded-pill" value="Register as a Driver">
             </form>
         </div>
-        <div class="col-md-2"></div>
+        
     </div>
 
 </div>
-<style>
-        
-</style>
+
 {% endblock %}
