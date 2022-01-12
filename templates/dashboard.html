@@ -1,4 +1,4 @@
-{% extends 'base.html'%} {% load static %} {% block content %}
+ {% extends 'base.html'%} {% load static %} {% block content %}
 <div class="container">
     <h1 class="text-center mt-5"> The Drivers</h1>
     <div class="col-md-6">
@@ -9,7 +9,7 @@
     <div class="row" style="width: auto;">
         {% for driver in drivers %}
         <div class="col-md-4" style="background-color: white;margin-top: 20px;margin-bottom:40px;margin-left: 70px;border-radius: 30px;">
-            <a href="">
+            <a href="{%url 'single_driver' driver.name%}">
                 <img src="{{driver.photo.url}}" class="image" style="width: 100%;border-radius: 30px;margin-top: 10px;">
             </a>
             <div class="row">
@@ -19,6 +19,8 @@
                 <div class="col-lg-5">
                     <h6 style="margin-top: 10px;margin-left: 30px;">{{ driver.location }}</h6>
                 </div>
+
+
             </div>
             <h6 style="margin-top: 20px;">Bio</h6>
             <p>{{ driver.details }}</p>
@@ -30,11 +32,4 @@
         {% endfor %}
     </div>
 </div>
-
-<style>
-    .image {
-        width: 50%;
-        height: auto;
-    }
-</style>
 {% endblock %}
