@@ -38,27 +38,29 @@ def drivers(request):
     return render(request, "dashboard.html", {"drivers": drivers})
 
 
-def single_driver(request,name):
+def single_driver(request,pk):
     current_user = request.user
-    drivers = Driver.objects.get(name=name)
+    drivers = Driver.objects.get(pk=pk)
+    
+    drivers.customers = current_user
+
     
     return render(request,'single_driver.html',{'drivers': drivers,'current_user':current_user,})
 
-
-
-def post_ratings(request,name):
+def post_ratings(request):
     customer = Rating()
+
+           
     if request.method == "POST":
+        
         
         form = RatesForm(request.POST,request.FILES,instance=customer)
 
         if form.is_valid():
-           form.save(commit=False)
-           user = request.user
-           drivers = Driver.objects.get(name=name)
-           single_driver(request,name)
-           
-           
+            
+            form.save(commit=False)
+            
+            return render(request,'single_driver.html')
     else:
         form=RatesForm()
     return render (request,'ratings.html', {'form': form})

@@ -1,5 +1,8 @@
 from django.db import models
 import datetime as dt
+from django.db.models.deletion import CASCADE
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 
@@ -15,7 +18,28 @@ class Location(models.Model):
     def __str__(self):
         return self.name
 
+class Rating(models.Model):
+    customer = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    efficiency_rate = models.IntegerField(default=0,max_length=10, blank=True, null=True)
+    service_rate = models.IntegerField(default=0,max_length=10, blank=True, null=True)
+    avarage_rate = models.IntegerField(default=0,max_length=10, blank=True, null=True)
 
+    def _str_(self):
+        return self.customer.user
+
+    def update_rating(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        self.save()
+
+    def save_rating(self):
+        self.save()
+
+    def delete_rating(self):
+        self.delete()
+
+    def __str__(self):
+        return self.customer.user
 
 class Driver(models.Model):
     name = models.CharField(max_length=200)
@@ -26,7 +50,6 @@ class Driver(models.Model):
     phone_number = models.IntegerField( blank=True, null=True)
     charge = models.IntegerField(blank=True, default=600)
     date = models.DateTimeField(auto_now_add=True, null=True)
-
     
     class Meta:
         ordering = ['-pk']
@@ -53,26 +76,4 @@ class Driver(models.Model):
         driver = cls.objects.get(id=id)
         return driver
 
-class Rating(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
-    driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
-    efficiency_rate = models.IntegerField(default=0, blank=True, null=True)
-    service_rate = models.IntegerField(default=0, blank=True, null=True)
-    avarage_rate = models.IntegerField(default=0, blank=True, null=True)
 
-    def _str_(self):
-        return self.driver.name
-
-    def update_rating(self, **kwargs):
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-        self.save()
-
-    def save_rating(self):
-        self.save()
-
-    def delete_rating(self):
-        self.delete()
-
-    def __str__(self):
-        return self.driver
