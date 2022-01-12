@@ -1,5 +1,6 @@
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from driver.forms import *
 from driver.models import *
 
@@ -42,3 +43,26 @@ def single_driver(request,name):
     drivers = Driver.objects.get(name=name)
     
     return render(request,'single_driver.html',{'drivers': drivers,'current_user':current_user,})
+
+
+
+def post_ratings(request,name):
+    customer = Rating()
+    if request.method == "POST":
+        
+        form = RatesForm(request.POST,request.FILES,instance=customer)
+
+        if form.is_valid():
+           form.save(commit=False)
+           user = request.user
+           drivers = Driver.objects.get(name=name)
+           single_driver(request,name)
+           
+           
+    else:
+        form=RatesForm()
+    return render (request,'ratings.html', {'form': form})
+        
+
+
+

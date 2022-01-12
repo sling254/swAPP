@@ -3,6 +3,8 @@ import datetime as dt
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 
+from shop.models import Customer
+
 class Location(models.Model):
     name = models.CharField(max_length=30)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -52,14 +54,14 @@ class Driver(models.Model):
         return driver
 
 class Rating(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
     efficiency_rate = models.IntegerField(default=0, blank=True, null=True)
     service_rate = models.IntegerField(default=0, blank=True, null=True)
     avarage_rate = models.IntegerField(default=0, blank=True, null=True)
 
     def _str_(self):
-        return self.user.user
+        return self.driver.name
 
     def update_rating(self, **kwargs):
         for key, value in kwargs.items():

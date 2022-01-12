@@ -85,4 +85,4 @@ class Supplier(models.Model):
 	supplier = models.ForeignKey(User,null=True,blank=True,on_delete=SET_NULL)
 	product = models.ForeignKey(Product,on_delete=SET_NULL,null=True)
 	email = models.EmailField()
-	phone_number = models.IntegerField(max_length=10)
+	phone_number = models.IntegerField()
