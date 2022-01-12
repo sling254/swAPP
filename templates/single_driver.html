@@ -1,37 +1,45 @@
-{% extends 'base.html'%}
-{% load static %}
-{% block content %}
-    <div class="container">
-        
-        <div class="row">
-            
-            <div class="col-md-4 driver">
-                <img src="{{drivers.photo.url}}"class="image">
-                
-                <h3 class="name">{{drivers.name}}  </h3>
-                
-                <h4>{{ drivers.location }}</h4>
-                <p>{{ drivers.details }}</p>
-                <p>{{ drivers.charge }}</p>
-                <p><a href="mailto: {{ drivers.email }}" target="_blank">{{ drivers.email }}</a></p>
-                <p><a href="tel: {{ drivers.phone_number }}" target="_blank">{{ drivers.phone_number }}</a></p>
-            
-                <p>{{ drivers.date|date }}</p>
-            
+{% extends 'base.html'%} {% load static %}{% load bootstrap4 %} {% block content %}
+<div class="container" style="margin-top: 70px;">
+
+    <div class="row">
+
+        <div class="col-md-4 driver" style="width: 10%;">
+            <div class="row">
+                <div class="col">
+                    <img src="{{drivers.photo.url}}" class="image" style="width: 300px; height: 300px; border-radius: 170px;">
+                </div>
+                <div class="col">
+                    <h3 class="name" style="margin-top: 20px;color: rgb(0, 0, 0);">{{drivers.name}} </h3>
+                    <br>
+                    <h4 style="color: rgb(0, 0, 0);">{{ drivers.location }}</h4>
+                </div>
             </div>
-            
-            
+
+
+
+
+            <p style="color: rgb(0, 0, 0);">{{ drivers.details }}</p>
+            <p style="color: rgb(0, 0, 0);">{{ drivers.charge }}</p>
+            <p><a style="color: rgb(0, 0, 0);" href="mailto: {{ drivers.email }}" target="_blank">{{ drivers.email }}</a></p>
+            <p><a style="color: rgb(0, 0, 0);" href="tel: {{ drivers.phone_number }}" target="_blank">{{ drivers.phone_number }}</a></p>
+
+            <p style="color: rgb(15, 15, 15);">{{ drivers.date|date }}</p>
+            <div class="rates" style="margin-top:50px;">
+                <h3 style="color: rgb(0, 0, 0);">Rate driver</h3>
+                <a class="btn btn-success" style="background-color: yellow;margin-top:20px;margin-bottom: 20px;color: rgb(0, 0, 0);" href="{%url 'post_ratings'%}">rate</a>
+
+            </div>
+        </div>
+        <div class="col" style="width: 50%;height: auto;">
+            <div class="card" style="width: 70%;height: 20vh;margin-top: 10%;border-radius: 30px;background-color: #FFCC03;">
+                <h3 style="text-align: center;color: rgb(0, 0, 0);">Ratings</h3>
+            </div>
+
         </div>
     </div>
 
-    <style>
-        .image{
-            width: 50%;
-            height: auto;
-            border-radius: 50%;
-        }
-        .driver a{
-            text-decoration: none;
-        }
-    </style>
+</div>
+</div>
+
+
 {% endblock %}

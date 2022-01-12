@@ -35,12 +35,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 cloudinary.config(
-    cloud_name = config('CD_NAME'),
-    api_key= config('CD_API'),
-    api_secret=config('CD_SECRET'),
-    secure = config('CD_SECURE')
+    cloud_name='dlzyg12i7',
+    api_key='755948595873632',
+    api_secret='SXz0A7wV1NkRoDpmLN0wFi5PcRM',
 )
-
 INSTALLED_APPS = [
     'bootstrap4',
     'django.contrib.admin',

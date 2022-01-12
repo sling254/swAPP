@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 import json
-from .models import Customer, OrderItem, Product, Order
+from .models import Customer, OrderItem, Product, Order, Supplier
 
 # Create your views here.
 
@@ -74,3 +74,12 @@ def UpdateView(request):
 
 
     return JsonResponse('item was added', safe=False)
+
+def suppliersView(request):
+    suppliers = Supplier.objects.all()
+    context = {
+        'suppliers':suppliers
+    }
+
+    return render(request, 'suppliers.html', context)
+        
