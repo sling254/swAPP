@@ -6,7 +6,8 @@
         <div class="col-md-4 driver" style="width: 10%;">
             <div class="row">
                 <div class="col">
-                    <img src="{{drivers.photo.url}}" class="image" style="width: 300px; height: 300px; border-radius: 170px;">
+                    <img src="{{drivers.photo.url}}" class="image"
+                        style="width: 300px; height: 300px; border-radius: 170px;">
                 </div>
                 <div class="col">
                     <h3 class="name" style="margin-top: 20px;color: rgb(0, 0, 0);">{{drivers.name}} </h3>
@@ -20,25 +21,61 @@
 
             <p style="color: rgb(0, 0, 0);">{{ drivers.details }}</p>
             <p style="color: rgb(0, 0, 0);">{{ drivers.charge }}</p>
-            <p><a style="color: rgb(0, 0, 0);" href="mailto: {{ drivers.email }}" target="_blank">{{ drivers.email }}</a></p>
-            <p><a style="color: rgb(0, 0, 0);" href="tel: {{ drivers.phone_number }}" target="_blank">{{ drivers.phone_number }}</a></p>
+            <p><a style="color: rgb(0, 0, 0);" href="mailto: {{ drivers.email }}" target="_blank">{{ drivers.email}}</a></p>
+            <p><a style="color: rgb(0, 0, 0);" href="tel: {{ drivers.phone_number }}" target="_blank">{{drivers.phone_number }}</a></p>
 
             <p style="color: rgb(15, 15, 15);">{{ drivers.date|date }}</p>
-            <div class="rates" style="margin-top:50px;">
-                <h3 style="color: rgb(0, 0, 0);">Rate driver</h3>
-                <a class="btn btn-success" style="background-color: yellow;margin-top:20px;margin-bottom: 20px;color: rgb(0, 0, 0);" href="{%url 'post_ratings'%}">rate</a>
 
+
+            <div class="row rating">
+                <div class="col-md-6">
+                    <form action="{% url 'rate' drivers.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-2">
+                            <label for="Efficiency">Efficiency</label>
+                            <input type="number" class="form-control" name="efficiency" value="0">
+                        </div>
+                        <div class="mb-1">
+                            <label for="Service">Service</label>
+                            <input type="number" class="form-control" name="service" value="0">
+                        </div>
+
+                        <button class="btn btn-outline-dark bg-dark text-white rounded-pill" type="submit">Rate</button>
+                    </form>
+                </div>
+                
+               
             </div>
         </div>
-        <div class="col" style="width: 50%;height: auto;">
-            <div class="card" style="width: 70%;height: 20vh;margin-top: 10%;border-radius: 30px;background-color: #FFCC03;">
-                <h3 style="text-align: center;color: rgb(0, 0, 0);">Ratings</h3>
+        <div class="col-md-12">
+            <h2 class="text-center">
+                <b>Driver Ratings</b>
+            </h2>
+
+            
+                {% for rate in ratings %}
+
+            <div class="row ">
+                <div class="col-md-4">
+                    <p>Efficiency: {{rate.efficiency_rate}}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Service: {{rate.service_rate}}</p>
+                </div>
+
+                <div class="col-md-4">
+                    <p>Avarage:{{rate.avarage_rate}}</p>
+                </div>
             </div>
+            {% empty %}
+            <p class="alert alert-danger" role="alert">No ratings yet!</p>
+            {% endfor %}
+
 
         </div>
+
+
     </div>
-
-</div>
 </div>
 
 
