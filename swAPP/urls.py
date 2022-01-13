@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('shop.urls')),
     path('drivers/',include('driver.urls')),
-    # path('Drivers/',include('driver.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
