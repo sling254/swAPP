@@ -1,7 +1,8 @@
 {% extends 'base.html'%}
 {% load static %}
 {% block content %}
-     <div class="row">
+<div class="container mb-4">
+	<div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
 				<form id="form">
@@ -24,15 +25,7 @@
 						<div class="form-field">
 							<input class="form-control" type="text" name="city" placeholder="City..">
 						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="state" placeholder="State..">
-						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
-						</div>
-						<div class="form-field">
-							<input class="form-control" type="text" name="country" placeholder="Zip code..">
-						</div>
+						
 					</div>
 
 					<hr>
@@ -42,8 +35,8 @@
 
 			<br>
 			<div class="box-element hidden" id="payment-info">
-				<small>Paypal Options</small>
-				<button id="make-payment">Make payment</button>
+				<small>Paypal Options</small>				
+				<button id="make-payment"><a href="{% url 'drivers'%}">Select Driver</a></button>
 				<div id="paypal-button-container"></div>
 			</div>
 			
@@ -57,7 +50,7 @@
 				<hr>
 				{% for item in items%}
 				<div class="cart-row">
-					<div style="flex:2"><img class="row-image" src="https://source.unsplash.com/random"></div>
+					<div style="flex:2"><img class="row-image" src="{{item.product.image.url}}"></div>
 					<div style="flex:2"><p>{{item.product.name}} </p></div>
 					<div style="flex:1"><p>${{item.product.price}}</p></div>
 					<div style="flex:1"><p>x{{item.quantity}}</p></div>
@@ -86,4 +79,6 @@
 		}
 
 	</script>
+
+</div>    
 {% endblock content %}
