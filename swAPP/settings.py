@@ -38,7 +38,7 @@ cloudinary.config(
     cloud_name = config('CD_NAME'),
     api_key= config('CD_API'),
     api_secret=config('CD_SECRET'),
-    secure = config('CD_SECURE')
+    #secure = config('CD_SECURE')
 )
 
 INSTALLED_APPS = [

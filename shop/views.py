@@ -12,8 +12,18 @@ def IndexView(request):
 
 def ProductsView(request):
     products = Product.objects.all()
+    if request.user.is_authenticated:
+        customer  = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart-total':0, 'get_cart_items': 0}
+
     context = {
-        'products': products
+        'items': items,
+        'order':order,
+        'products':products
     }
     return render(request, 'products.html', context)
 

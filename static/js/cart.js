@@ -4,6 +4,7 @@ for (var i = 0; i < updateBtns.length; i++){
     updateBtns[i].addEventListener('click', function(){
         var productId = this.dataset.product;
         var action = this.dataset.action
+		location.reload(true);
         console.log('productId:', productId, 'action:',action);
         console.log('USER:', user)
         if(user == 'AnonymousUser'){
@@ -35,7 +36,5 @@ function updateUserOrder(productId, action){
 			location.reload(true);
 		})
 }
-
-    
 
     
