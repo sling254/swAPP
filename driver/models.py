@@ -1,7 +1,12 @@
 from django.db import models
 import datetime as dt
+from django.db.models.deletion import CASCADE
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator
+from shop.models import Customer
 
 class Location(models.Model):
     name = models.CharField(max_length=30)
@@ -17,6 +22,7 @@ class Location(models.Model):
 
 class Driver(models.Model):
     name = models.CharField(max_length=200)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     photo = CloudinaryField("image",null=True)
     details = models.TextField(blank=True, null=True)
     location = models.ForeignKey(Location, on_delete=models.CASCADE,null=True)
@@ -24,7 +30,6 @@ class Driver(models.Model):
     phone_number = models.IntegerField( blank=True, null=True)
     charge = models.IntegerField(blank=True, default=600)
     date = models.DateTimeField(auto_now_add=True, null=True)
-
     
     class Meta:
         ordering = ['-pk']
@@ -51,15 +56,16 @@ class Driver(models.Model):
         driver = cls.objects.get(id=id)
         return driver
 
-class Rating(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
-    efficiency_rate = models.IntegerField(default=0, blank=True, null=True)
-    service_rate = models.IntegerField(default=0, blank=True, null=True)
-    avarage_rate = models.IntegerField(default=0, blank=True, null=True)
 
-    def _str_(self):
-        return self.user.user
+class Rating(models.Model):
+    driver = models.ForeignKey(Driver,on_delete=models.CASCADE,null=True,blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    efficiency_rate = models.IntegerField(default=0,validators=[MaxValueValidator(9999999999)], blank=True, null=True)
+    service_rate = models.IntegerField(default=0,validators=[MaxValueValidator(9999999999)], blank=True, null=True)
+    avarage_rate = models.IntegerField(default=0,validators=[MaxValueValidator(9999999999)], blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
 
     def update_rating(self, **kwargs):
         for key, value in kwargs.items():
@@ -72,5 +78,4 @@ class Rating(models.Model):
     def delete_rating(self):
         self.delete()
 
-    def __str__(self):
-        return self.driver
+    

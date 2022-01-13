@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.db.models.deletion import CASCADE, SET_NULL
 
 # Create your models here.
 
@@ -81,3 +82,9 @@ class ShippingAddress(models.Model):
 
 	def __str__(self):
 		return self.address
+
+class Supplier(models.Model):
+	supplier = models.ForeignKey(User,null=True,blank=True,on_delete=SET_NULL)
+	product = models.ForeignKey(Product,on_delete=SET_NULL,null=True)
+	email = models.EmailField()
+	phone_number = models.IntegerField()
