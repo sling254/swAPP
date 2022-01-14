@@ -14,19 +14,19 @@
                     <br>
                     <h4 style="color: rgb(0, 0, 0);">{{ drivers.location }}</h4>
                 </div>
+
+                <p style="color: rgb(0, 0, 0);">{{ drivers.details }}</p>
+                <p style="color: rgb(0, 0, 0);">{{ drivers.charge }}</p>
+                <p><a style="color: rgb(0, 0, 0);" href="mailto: {{ drivers.email }}" target="_blank">{{ drivers.email}}</a></p>
+                <p><a style="color: rgb(0, 0, 0);" href="tel: {{ drivers.phone_number }}" target="_blank">{{drivers.phone_number }}</a></p>
+    
+                <p style="color: rgb(15, 15, 15);">{{ drivers.date|date }}</p>
             </div>
 
 
 
-
-            <p style="color: rgb(0, 0, 0);">{{ drivers.details }}</p>
-            <p style="color: rgb(0, 0, 0);">{{ drivers.charge }}</p>
-            <p><a style="color: rgb(0, 0, 0);" href="mailto: {{ drivers.email }}" target="_blank">{{ drivers.email}}</a></p>
-            <p><a style="color: rgb(0, 0, 0);" href="tel: {{ drivers.phone_number }}" target="_blank">{{drivers.phone_number }}</a></p>
-
-            <p style="color: rgb(15, 15, 15);">{{ drivers.date|date }}</p>
-
-
+         </div>
+         <div class="col-md-8">
             <div class="row rating">
                 <div class="col-md-6">
                     <form action="{% url 'rate' drivers.id %}" method="post">
@@ -46,7 +46,7 @@
                 
                
             </div>
-        </div>
+        
         <div class="col-md-12">
             <h2 class="text-center">
                 <b>Driver Ratings</b>
@@ -74,6 +74,10 @@
 
         </div>
 
+         </div>
+
+
+            
 
     </div>
 </div>
