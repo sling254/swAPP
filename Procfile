@@ -1,1 +1,1 @@
-web: gunicorn swAPP.wsgi 
+web: gunicorn swAPP.wsgi
